@@ -1,3 +1,148 @@
+/*fonts importées depuis Poppins Google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+/*De base sur la racine HTML*/
+:root{
+    --blanche: #ffff;
+    --noir: #222;
+    --primaire: #007bc4;
+    --gris: #888;
+}
+
+/*style global*/
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
 body{
-    background-color: darkslategrey;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;  /*16px*/
+    color: var(--noir);
+    background-color: var(--blanche);
+}   
+ul,li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+img{
+    max-width: 100%;
+}
+
+.promo{
+    background-color: var(--primaire);
+    text-align: center;
+    color: var(--blanche);
+    padding: 0.5rem 0; /*borne HT+BAS et G+D (ici 0)*/
+}
+
+.container{
+    max-width: 114rem;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px){
+    .container{
+        padding: 0 3rem;
+    }
+}
+
+.navigation{
+    height: 7rem;
+    justify-content: space-between;
+}
+
+.d-flex{
+    display: flex;
+    align-items: center;
+}
+
+.icon1{
+    display: none;
+}
+
+.menu .top{
+    display: none ;
+}
+
+.logo{
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 0rem 1.5rem;
+}
+
+.logo span{
+    font-size: 3rem;
+    color: var(--primaire);
+}
+
+/*modifie sauf le dernier élément*/
+.nav-item:not(:last-child){
+    margin: 0.5rem;
+}
+
+/*modifie le premier nav-link élément de nav-item*/
+.nav-item:first-child .nav-link{
+    color: var(--primaire);
+}
+
+.nav-link{
+    padding: 0 1rem;
+    transition: all 300ms ease-in-out; /*transition entre 2 états d'un élément*/
+}
+
+.nav-link:hover{
+    color: var(--primaire);
+}
+
+.nav .icons div{
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.nav .icons div:not(:last-child){
+    margin-right: 0.5rem;
+}
+
+.nav .icons div:hover{
+    color: var(--primaire);
+}
+
+.nav .icons div:last-child{
+    position: relative; /*indique a l'élément de respecter la taille établis*/
+}
+
+.nav .icons div span{
+    position: absolute; /*indique a l'élément de ne pas respecter la taille déjà établie mais celle qu'on lui indique*/
+    top: -0.5rem;
+    right: -1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blanche);
+    background-color: var(--primaire);
+    height: 2.2rem;
+    width: 2.2rem;
+    border-radius: 50%;
+}
+
+/*aligne l'élément dans le span juste au dessus*/
+.align-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
