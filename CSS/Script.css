@@ -1,148 +1,231 @@
 /*fonts importées depuis Poppins Google fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
-/*De base sur la racine HTML*/
-:root{
-    --blanche: #ffff;
-    --noir: #222;
-    --primaire: #007bc4;
-    --gris: #888;
-}
 
-/*style global*/
-*,
-*::before,
-*::after{
+
+
+*{
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
-}
-
-html{
     box-sizing: border-box;
-    font-size: 62.5%;
-}
-
-body{
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.6rem;  /*16px*/
-    color: var(--noir);
-    background-color: var(--blanche);
-}   
-ul,li{
+  }
+  body{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+  .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70px;
+    background: #11101d;
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all 0.5s ease;
+  }
+  .sidebar ul{
+    margin-top: 130px;
+  }
+  .sidebar ul li{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin:  0 5px;
     list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: inherit;
-}
-
-img{
-    max-width: 100%;
-}
-
-.promo{
-    background-color: var(--primaire);
-    text-align: center;
-    color: var(--blanche);
-    padding: 0.5rem 0; /*borne HT+BAS et G+D (ici 0)*/
-}
-
-.container{
-    max-width: 114rem;
-    margin: 0 auto;
-}
-
-@media only screen and (max-width: 1200px){
-    .container{
-        padding: 0 3rem;
-    }
-}
-
-.navigation{
-    height: 7rem;
-    justify-content: space-between;
-}
-
-.d-flex{
-    display: flex;
+    line-height: 50px;
+    margin: 5px 0;
+  }
+  .sidebar ul li a{
+    color: #fff;
     align-items: center;
-}
-
-.icon1{
-    display: none;
-}
-
-.menu .top{
-    display: none ;
-}
-
-.logo{
-    font-weight: 700;
-    font-size: 2rem;
-    padding: 0rem 1.5rem;
-}
-
-.logo span{
-    font-size: 3rem;
-    color: var(--primaire);
-}
-
-/*modifie sauf le dernier élément*/
-.nav-item:not(:last-child){
-    margin: 0.5rem;
-}
-
-/*modifie le premier nav-link élément de nav-item*/
-.nav-item:first-child .nav-link{
-    color: var(--primaire);
-}
-
-.nav-link{
-    padding: 0 1rem;
-    transition: all 300ms ease-in-out; /*transition entre 2 états d'un élément*/
-}
-
-.nav-link:hover{
-    color: var(--primaire);
-}
-
-.nav .icons div{
-    font-size: 2rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-}
-
-.nav .icons div:not(:last-child){
-    margin-right: 0.5rem;
-}
-
-.nav .icons div:hover{
-    color: var(--primaire);
-}
-
-.nav .icons div:last-child{
-    position: relative; /*indique a l'élément de respecter la taille établis*/
-}
-
-.nav .icons div span{
-    position: absolute; /*indique a l'élément de ne pas respecter la taille déjà établie mais celle qu'on lui indique*/
-    top: -0.5rem;
-    right: -1.2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--blanche);
-    background-color: var(--primaire);
-    height: 2.2rem;
-    width: 2.2rem;
+    display: flex;
+    text-decoration: none;
+    border-radius: 12px;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+  }
+  .sidebar ul li a:hover{
+    color: #11101d;
+    background: #fff;
+  }
+  .sidebar .links_name{
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .sidebar ul li i{
+    font-size: 22px;
+    font-weight: 400;
+    height: 40px;
+    min-width: 50px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 12px;
+  }
+  .sidebar #btn{
+    position: absolute;
+    color: #fff;
+    top: 6px;
+    left: 50%;
+    font-size: 27px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+  }
+  .sidebar.active{
+  width: 240px;
+  }
+  .sidebar.active .links_name{
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0s;
+  }
+  .sidebar.active #btn{
+    left: 90%;
+  }
+  .sidebar img{
+    width: 120px;
     border-radius: 50%;
-}
+    margin-left: 40px;
+    margin-top: 120px;
+  }
+  .sidebar .logo_content .logo{
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.1s ease;
+  }
+  .sidebar.active .logo_content .logo{
+    opacity: 1;
+    pointer-events: none;
+    transition: all 2s ease;
+  }
+  .logo p{
+    font-size: 21px;
+    margin-left: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .home_content{
+    position: absolute;
+    height: 500px;
+    width: calc(100% - 78px);
+    left: 78px;
+    background-size: cover;
+    transition: all 0.5s ease;
+  }
+  
+  .sidebar.active ~ .home_content{
+    z-index: 100;
+    width: calc(100% - 240px);
+    left: 240px;
+  }
+  .home_content .text img{
+    background-position: center;
+    background-size: cover;
+    max-height: max-content;
+    max-width: max-content;
+    /* height: 100%;
+    width: 100%; */
+  }
+  
+  
+  /* ========= scrolling effect ======*/
+  
+  .all{
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+  }
+  /* hide scroll bar */
+  .all::-webkit-scrollbar{
+    width: 0px;
+  }
+  
+  
+  .sidebar .profile_content{
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .sidebar .profile_content .profile{
+    position: relative;
+    padding: 10px 6px;
+    height: 60px;
+    background: none;
+    transition: all 500ms ease-in-out;
+  }
+  .social-links i{
+   padding: 8px;
+   margin-left: 10px;
+   margin-top: 7px;
+   color: rgb(233, 234, 236);
+   background: #393b57;
+   border-radius: 50px;
+   width: 33px;
+   height: 33px;
+   font-size: 17px;
+   text-align: center;
+  }
+  .social-links i:hover{
+    background: #36adf1;
+  }
+  .sidebar.active .profile_content .profile{
+    background: #1d1b31;
+  }
+  .profile #log_out{
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    border-radius: 12px;
+    text-align: center;
+    transition:  all 0.4s ease;
+    background: #1d1b31;
+  }
+  .sidebar.active .profile #log_out{
+    left: 90%;
+  }
 
-/*aligne l'élément dans le span juste au dessus*/
-.align-center{
+.produits{
+    border: 1px solid black;
+    border-radius: 12px;
+    height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
+    margin-left: 150px;
+
 }
+/*
+#tabproduits{
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.produits #tabproduits .row{
+    border: 1px solid blue;
+}
+*/
+
+        
+
+
+
